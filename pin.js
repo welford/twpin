@@ -115,13 +115,22 @@ function openStartupTiddlers(options) {
 			}
 		}
 	}
-	storyFilter = storyFilter + " [tag["+PINNED_TAG+"]]";
+	storyFilter = storyFilter;
 	// Process the story filter to get the story list
 	var storyList = $tw.wiki.filterTiddlers(storyFilter);
+	var taggedList = $tw.wiki.filterTiddlers("[tag["+PINNED_TAG+"]] +[!sort[modified]]");
 	// If the target tiddler isn't included then splice it in at the top
 	if(target && storyList.indexOf(target) === -1) {
 		storyList.unshift(target);
 	}
+	// Add and tagged tiddlers to the end of the list if they aren't already in it
+	for (var i = 0; i < taggedList.length; i++) {
+		taggedList[i];
+		if(storyList.indexOf(taggedList[i]) === -1) {
+			storyList.push(taggedList[i]);
+		}		
+	}
+
 	// Save the story list
 	$tw.wiki.addTiddler({title: DEFAULT_STORY_TITLE, text: "", list: storyList},$tw.wiki.getModificationFields());
 	// If a target tiddler was specified add it to the history stack
