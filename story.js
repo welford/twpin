@@ -23,7 +23,7 @@ var DEFAULT_HISTORY_TITLE = "$:/HistoryList";
 
 // Default tiddlers
 var DEFAULT_TIDDLERS_TITLE = "$:/DefaultTiddlers";
-var PINNED_TAG = "$:/tags/DefaultTiddlers";
+//var PINNED_TAG = "$:/tags/DefaultTiddlers";
 
 // Config
 var CONFIG_UPDATE_ADDRESS_BAR = "$:/config/Navigation/UpdateAddressBar"; // Can be "no", "permalink", "permaview"
@@ -118,17 +118,19 @@ function openStartupTiddlers(options) {
 	storyFilter = storyFilter;
 	// Process the story filter to get the story list
 	var storyList = $tw.wiki.filterTiddlers(storyFilter);
-	var taggedList = $tw.wiki.filterTiddlers("[tag["+PINNED_TAG+"]] +[!sort[modified]]");
+	var taggedList = $tw.wiki.getTiddler(DEFAULT_TIDDLERS_TITLE).fields["list"];	
 	// If the target tiddler isn't included then splice it in at the top
 	if(target && storyList.indexOf(target) === -1) {
 		storyList.unshift(target);
 	}
 	// Add and tagged tiddlers to the end of the list if they aren't already in it
-	for (var i = 0; i < taggedList.length; i++) {
-		taggedList[i];
-		if(storyList.indexOf(taggedList[i]) === -1) {
-			storyList.push(taggedList[i]);
-		}		
+	if(taggedList){
+		for (var i = 0; i < taggedList.length; i++) {
+			taggedList[i];
+			if(storyList.indexOf(taggedList[i]) === -1) {
+				storyList.push(taggedList[i]);
+			}		
+		}
 	}
 
 	// Save the story list

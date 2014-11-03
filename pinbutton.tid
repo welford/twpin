@@ -4,15 +4,16 @@ caption: {{$:/plugins/welford/pin/images/pin}}
 list-after:$:/core/ui/Buttons/info
 description: Pin a tiddler to the main page
 
-<$fieldmangler>
-<$list filter="[all[current]!tag[$:/tags/DefaultTiddlers]]">
-<$button message="tm-add-tag" param="$:/tags/DefaultTiddlers" class=<<tv-config-toolbar-class>> tooltip="Pin this tiddler">
-{{$:/plugins/welford/pin/images/pinned}}
-</$button>
-</$list>
-<$list filter="[all[current]tag[$:/tags/DefaultTiddlers]]">
-<$button message="tm-remove-tag" param="$:/tags/DefaultTiddlers" class=<<tv-config-toolbar-class>> tooltip="Unpin this tiddler">
+<$fieldmangler tiddler="$:/DefaultTiddlers">
+<$list filter="[all[current]]-[list[$:/DefaultTiddlers]]">
+<$button message="tm-add-field" param="list" set="$:/DefaultTiddlers!!list" appendFront=<<currentTiddler>> class=<<tv-config-toolbar-class>> tooltip="Pin this tiddler">
 {{$:/plugins/welford/pin/images/unpinned}}
 </$button>
 </$list>
+<$list filter="[list[$:/DefaultTiddlers]is[current]]">
+<$button message="tm-add-field" param="list" set="$:/DefaultTiddlers!!list" remove=<<currentTiddler>> class=<<tv-config-toolbar-class>> tooltip="Unpin this tiddler">
+{{$:/plugins/welford/pin/images/pinned}}
+</$button>
+</$list>
+
 </$fieldmangler>
