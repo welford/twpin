@@ -1,6 +1,6 @@
 ﻿title: $:/plugins/welford/pin/button
 tags: $:/tags/ViewToolbar
-caption: {{$:/plugins/welford/pin/images/pin}}
+caption: {{$:/plugins/welford/pin/images/unpinned}} pin
 list-after:$:/core/ui/Buttons/info
 description: Pin a tiddler to the main page
 
@@ -8,14 +8,14 @@ description: Pin a tiddler to the main page
 <$fidget>
 <$list filter="[all[current]]-[list[$:/DefaultTiddlers]]">
 <$button class=<<tv-config-toolbar-class>> tooltip="Pin this tiddler">
-<$action-sendmessage $message="tm-add-field" param="list"/>
+<$action-sendmessage $message="tm-add-field" $param="list"/>
 <$action-sendmessage $message="tm-append-to-list" field="$:/DefaultTiddlers!!list" value=<<currentTiddler>>/>
 {{$:/plugins/welford/pin/images/unpinned}}
 </$button>
 </$list>
 <$list filter="[list[$:/DefaultTiddlers]is[current]]">
 <$button class=<<tv-config-toolbar-class>> tooltip="Unpin this tiddler">
-<$action-sendmessage $message="tm-add-field" field="list"/>
+<$action-sendmessage $message="tm-add-field" $param="list"/>
 <$action-sendmessage $message="tm-remove-from-list" field="$:/DefaultTiddlers!!list" value=<<currentTiddler>>/>
 {{$:/plugins/welford/pin/images/pinned}}
 </$button>

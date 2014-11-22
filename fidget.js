@@ -59,11 +59,15 @@ Fidget.prototype.refresh = function(changedTiddlers) {
 };
 
 Fidget.prototype.GetParameters = function(event) {	
-	if(typeof event.param === "object") {
+	if(typeof event.paramObject === "object") {
 		// If we got a hashmap use it as the template
-		var templateTiddler = event.param;
-		this.field = templateTiddler.field		
-		this.value = templateTiddler.value
+		var additionalFields = event.paramObject;
+		if(additionalFields && additionalFields.field) {
+			this.field = additionalFields.field;
+		}
+		if(additionalFields && additionalFields.value) {
+			this.value = additionalFields.value;
+		}
 	}
 }
 

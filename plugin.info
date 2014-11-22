@@ -2,6 +2,6 @@
 	"title": "$:/plugins/welford/twpin",
 	"description": "pin tiddlers to the default view",
 	"author": "James W. Anderson",
-    "core-version": ">=5.0.0",
-    "list": "readme"
+	"core-version": ">=5.0.0",
+	"list": "readme"
 }
