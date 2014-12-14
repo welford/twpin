@@ -1,0 +1,8 @@
+﻿title: $:/plugins/welford/twpin/settings/position
+tags:
+
+<$link to="$:/config/twpin/position">Pinned Tiddlers  Display Position</$link>
+
+<$radio tiddler="$:/config/twpin/position" value="before"> Before [[$:/DefaultTiddlers]] </$radio>
+
+<$radio tiddler="$:/config/twpin/position" value="after"> After [[$:/DefaultTiddlers]] </$radio>
