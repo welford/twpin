@@ -1,0 +1,3 @@
+﻿title: $:/plugins/welford/twpin/caption
+
+<$fieldmangler tiddler="$:/DefaultTiddlers"><$list filter="[all[current]]-[list[$:/DefaultTiddlers]]">pin tiddler</$list><$list filter="[list[$:/DefaultTiddlers]is[current]]">unpin tiddler</$list></$fieldmangler>
